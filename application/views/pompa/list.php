@@ -2,33 +2,69 @@
 <?php $this->load->view('inc/toastr'); ?>
 
 <h4 class="fw-bold mb-4 mt-2">Manajemen Pompa Air</h4>
+
 <div class="mb-4 card card-body glass rounded-4 border-0 shadow-sm">
-    <form action="<?= site_url('pompa/tambah') ?>" method="post" class="d-flex flex-column flex-md-row gap-2 mb-2">
-        <input type="text" name="nama_pompa" class="form-control rounded-3 w-100" placeholder="Nama Pompa" required>
-        <input type="text" name="kode_pompa" class="form-control rounded-3 w-100" placeholder="Kode Pompa" required>
-        <button type="submit" class="btn btn-gradient w-100 w-md-auto" style="min-width:120px;"><i class="bi bi-plus"></i> Tambah</button>
+    <form action="<?= site_url('pompa/tambah') ?>" method="post" class="row g-2 align-items-end">
+        <div class="col-6">
+            <label class="form-label">Nama Pompa</label>
+            <input type="text" name="nama_pompa" class="form-control rounded-3" required>
+        </div>
+        <div class="col-4">
+            <label class="form-label">Kode Pompa</label>
+            <input type="text" name="kode_pompa" class="form-control rounded-3" required>
+        </div>
+        <div class="col-2">
+            <button type="submit" class="btn btn-gradient w-100">Tambah</button>
+        </div>
     </form>
 </div>
-<div class="list-group">
+
+<!-- TABLE DESKTOP -->
+<div class="table-responsive mb-3">
+    <table class="table table-sm table-hover align-middle glass rounded-4">
+        <thead class="table-light">
+            <tr>
+                <th>Nama Pompa</th>
+                <th>Kode Pompa</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php if (empty($pompa_list)): ?>
+            <tr>
+                <td colspan="3" class="text-center text-muted">Belum ada pompa yang terdaftar.</td>
+            </tr>
+            <?php endif; ?>
+            <?php foreach($pompa_list as $pompa): ?>
+            <tr>
+                <td class="fw-bold"><?= $pompa['nama_pompa'] ?></td>
+                <td><span class="text-muted"><?= $pompa['kode_pompa'] ?></span></td>
+                <td>
+                    <a href="<?= site_url('pompa/hapus/'.$pompa['id_pompa']) ?>" onclick="return confirm('Hapus pompa?')" class="btn btn-outline-danger btn-sm rounded-4"><i class="bi bi-trash"></i></a>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>
+
+<!-- CARD LIST MOBILE -->
+<div class="pompa-list-mobile">
     <?php if (empty($pompa_list)): ?>
-        <div class="list-group-item text-center text-muted glass rounded-4">
-            Belum ada pompa yang terdaftar.
+        <div class="text-center my-4">
+            <img src="https://cdn-icons-png.flaticon.com/512/2913/2913466.png" width="70" class="mb-2" alt="">
+            <div class="text-muted small mb-2">Belum ada pompa yang terdaftar.<br>Tambah pompa dulu yuk!</div>
         </div>
     <?php endif; ?>
     <?php foreach($pompa_list as $pompa): ?>
-    <div class="list-group-item d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center glass mb-2 rounded-4 border-0 shadow-sm">
-        <div class="mb-2 mb-md-0">
-            <div class="fw-bold"><?= $pompa['nama_pompa'] ?></div>
-            <small class="text-muted">Kode: <?= $pompa['kode_pompa'] ?></small>
-        </div>
+    <div class="glass mb-3 p-3 d-flex justify-content-between align-items-center rounded-4 border-0 shadow-sm">
         <div>
-            <a href="<?= site_url('pompa/hapus/'.$pompa['id_pompa']) ?>"
-                class="btn btn-outline-danger btn-sm rounded-4 btn-hapus-modal"
-                data-href="<?= site_url('pompa/hapus/'.$pompa['id_pompa']) ?>">
-                <i class="bi bi-trash"></i>
-            </a>
+            <div class="fw-bold"><?= $pompa['nama_pompa'] ?></div>
+            <div class="small text-muted">Kode: <?= $pompa['kode_pompa'] ?></div>
         </div>
+        <a href="<?= site_url('pompa/hapus/'.$pompa['id_pompa']) ?>" onclick="return confirm('Hapus pompa?')" class="btn btn-outline-danger btn-sm rounded-4"><i class="bi bi-trash"></i></a>
     </div>
     <?php endforeach; ?>
 </div>
+
 <?php $this->load->view('inc/footer'); ?>
