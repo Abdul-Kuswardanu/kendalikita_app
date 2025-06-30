@@ -4,17 +4,20 @@
 <h4 class="fw-bold mb-4 mt-2">Manajemen Pompa Air</h4>
 
 <div class="mb-4 card card-body glass rounded-4 border-0 shadow-sm">
-    <form action="<?= site_url('pompa/tambah') ?>" method="post" class="row g-2 align-items-end">
-        <div class="col-6">
-            <label class="form-label">Nama Pompa</label>
-            <input type="text" name="nama_pompa" class="form-control rounded-3" required>
-        </div>
-        <div class="col-4">
-            <label class="form-label">Kode Pompa</label>
-            <input type="text" name="kode_pompa" class="form-control rounded-3" required>
-        </div>
-        <div class="col-2">
-            <button type="submit" class="btn btn-gradient w-100">Tambah</button>
+    <form action="<?= site_url('pompa/tambah') ?>" method="post">
+        <div class="row g-2">
+            <div class="col-12 col-md-5">
+                <label class="form-label">Nama Pompa</label>
+                <input type="text" name="nama_pompa" class="form-control rounded-3" required>
+            </div>
+            <div class="col-12 col-md-5">
+                <label class="form-label">Kode Pompa</label>
+                <input type="text" name="kode_pompa" class="form-control rounded-3" required>
+            </div>
+            <div class="col-12 col-md-2 d-grid align-items-end">
+                <label class="form-label d-none d-md-block">&nbsp;</label>
+                <button type="submit" class="btn btn-gradient w-100">Tambah</button>
+            </div>
         </div>
     </form>
 </div>
@@ -26,7 +29,7 @@
             <tr>
                 <th>Nama Pompa</th>
                 <th>Kode Pompa</th>
-                <th>Aksi</th>
+                <th>#</th>
             </tr>
         </thead>
         <tbody>

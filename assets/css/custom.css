@@ -29,8 +29,18 @@ body { background: #F4F6FB; }
 /* Tampil card list mobile, sembunyikan table di hp */
 @media (max-width: 600px) {
   .table-responsive { display: none; }
-  .pompa-list-mobile { display: block; margin-bottom: 70px; }
+  .pompa-list-mobile, .log-list-mobile { display: block; margin-bottom: 70px; }
+  .row.g-2 > [class^="col-"] { margin-bottom: 10px; }
 }
 @media (min-width: 601px) {
-  .pompa-list-mobile { display: none; }
+  .pompa-list-mobile, .log-list-mobile { display: none; }
+}
+
+@media (max-width: 600px) {
+  .table-responsive { display: none; }
+  .jadwal-list-mobile { display: block; margin-bottom: 70px; }
+  .row.g-2 > [class^="col-"], .row.row-cols-1 > [class^="col-"] { margin-bottom: 10px; }
+}
+@media (min-width: 601px) {
+  .jadwal-list-mobile { display: none; }
 }

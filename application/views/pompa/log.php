@@ -3,8 +3,8 @@
 
 <h4 class="fw-bold mb-4 mt-2">Log Aktivitas Pompa</h4>
 
-<!-- table dekstop -->
-<div class="table-responsive mb-3">
+<!-- TABLE DESKTOP -->
+<div class="table-responsive">
     <table class="table table-sm table-hover align-middle glass rounded-4">
         <thead class="table-light">
             <tr>
@@ -32,24 +32,24 @@
     </table>
 </div>
 
-<!-- card list mobile -->
- <div class="log-list-mobile">
-    <?php if(empty($log_list)): ?>
+<!-- CARD LIST MOBILE -->
+<div class="log-list-mobile">
+    <?php if (empty($log_list)): ?>
         <div class="text-center my-4">
-            <img src="https://cdn-icons-png.flaticon.com/512/2913/2913466.png" width="70" class="mb-2" alt="">
-            <div class="text-muted small mb-2">Saat ini belum ada Riwayat</div>
+            <img src="https://cdn-icons-png.flaticon.com/512/458/458619.png" width="78" class="mb-2" alt="">
+            <div class="text-muted small mb-2">Belum ada log aktivitas.<br>Belum ada aktivitas pompa.</div>
         </div>
-        <?php endif; ?>
-        <?php foreach($log_list as $log): ?>
-        <div class="glass mb-3 p-3 d-flex justify-content-between align-items-center rounded-4 border-0 shadow-sm">
-            <div>
-            <div class="fw-bold"><?= $log['nama_pompa'] ?></div>
-            <div class="small text-muted"><span class="badge <?= $log['aksi']=='ON'?'bg-success':'bg-secondary' ?>"><?= $log['aksi'] ?></span></div>
-            <div class="fw-bold"><?= $log['waktu'] ?></div>
+    <?php endif; ?>
+    <?php foreach($log_list as $log): ?>
+    <div class="glass mb-3 p-3 d-flex align-items-center justify-content-between rounded-4 border-0 shadow-sm"
+         style="border-left:6px solid <?= $log['aksi']=='ON'?'#34d399':'#a1a1aa' ?>">
+        <div>
+            <div class="fw-bold"><?= $log['nama_pompa']; ?></div>
+            <div class="small"><?= $log['waktu']; ?></div>
+            <span class="badge <?= $log['aksi']=='ON'?'bg-success':'bg-secondary' ?>"><?= $log['aksi']; ?></span>
         </div>
     </div>
     <?php endforeach; ?>
- </div>
-
+</div>
 
 <?php $this->load->view('inc/footer'); ?>
