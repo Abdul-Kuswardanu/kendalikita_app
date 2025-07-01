@@ -1,7 +1,18 @@
 <?php $this->load->view('inc/header'); ?>
-<?php $this->load->view('inc/toastr'); ?>
-
+<?php $this->load->view('inc/sidebar'); ?>
 <h4 class="fw-bold mb-4 mt-2">Log Aktivitas Pompa</h4>
+
+<?php
+$log_list = [
+    ['nama_pompa'=>'Pompa Sumur','aksi'=>'ON','waktu'=>'2024-07-01 07:20:03'],
+    ['nama_pompa'=>'Pompa Kolam','aksi'=>'OFF','waktu'=>'2024-07-01 08:11:45'],
+    ['nama_pompa'=>'Pompa Tandon','aksi'=>'ON','waktu'=>'2024-07-01 10:05:00'],
+    ['nama_pompa'=>'Pompa Kebun','aksi'=>'OFF','waktu'=>'2024-07-01 11:22:11'],
+    ['nama_pompa'=>'Pompa Sawah','aksi'=>'ON','waktu'=>'2024-07-01 13:44:31'],
+    ['nama_pompa'=>'Pompa Darurat','aksi'=>'OFF','waktu'=>'2024-07-01 15:02:02'],
+    ['nama_pompa'=>'Pompa Aquarium','aksi'=>'ON','waktu'=>'2024-07-01 17:22:43'],
+];
+?>
 
 <!-- TABLE DESKTOP -->
 <div class="table-responsive">
@@ -51,5 +62,4 @@
     </div>
     <?php endforeach; ?>
 </div>
-
 <?php $this->load->view('inc/footer'); ?>

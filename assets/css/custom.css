@@ -1,46 +1,119 @@
-body { background: #F4F6FB; }
-
-.appbar { background:linear-gradient(90deg,#0ea5e9,#3b82f6); color:#fff; border-bottom-left-radius:20px; border-bottom-right-radius:20px; box-shadow:0 2px 8px #aaa;}
-.appbar .navbar-brand { font-size:1.4rem; font-weight:700; letter-spacing:1px; }
-
-.card-status, .glass { border:none; border-radius:18px; box-shadow:0 3px 24px #d4e5ff60; background:rgba(255,255,255,0.97)!important; }
-.card-status .fw-bold { color:#2563eb; }
-
-.btn-gradient { background:linear-gradient(90deg,#0ea5e9,#3b82f6); color:#fff; font-weight:600; border:none; }
-.btn-gradient:hover { background:linear-gradient(90deg,#3b82f6,#0ea5e9); color:#fff; }
-
-.badge-status, .badge { font-size:1em; border-radius:8px; }
-.form-label { margin-bottom:.1rem; font-weight:500; }
-
-.nav-bottom { position:fixed; bottom:0; left:0; width:100%; z-index:1000; box-shadow:0 -1px 10px #e3e3e3; border-top-left-radius:20px; border-top-right-radius:20px; }
-
-.table-responsive { border-radius:12px; background:transparent; }
-.table th, .table td { vertical-align:middle!important; }
-
-@media(max-width:600px){
-    .container, .container-fluid { padding-left:8px!important; padding-right:8px!important; }
-    .card-status, .glass { border-radius:11px!important; padding:10px 8px!important; }
-    .form-control, select { font-size:0.99em; border-radius:7px; }
-    .table, .table-responsive { border-radius:7px!important; font-size:0.98em; }
-    h4, .fw-bold { font-size:1.13em!important; }
-    .nav-bottom { border-top-left-radius:12px; border-top-right-radius:12px; font-size:0.97em;}
+html, body {
+    min-height: 100vh;
+    height: auto;
+    overflow-x: hidden;
+    background: #F4F6FB;
 }
-
-/* Tampil card list mobile, sembunyikan table di hp */
+.wrapper { min-height: 100vh; }
+.sidebar {
+    width: 220px;
+    min-width: 200px;
+    background: #fff;
+    position: fixed;
+    left: 0; top: 0; bottom: 0;
+    z-index: 1040;
+    height: 100vh;
+    transition: transform 0.32s cubic-bezier(.7,1.6,.3,1), box-shadow 0.22s;
+    box-shadow: 2px 0 26px #e5e5e5bb;
+    border-top-right-radius: 18px;
+    border-bottom-right-radius: 18px;
+    border-right: 2px solid #e0e7ef;
+    display: flex; flex-direction: column;
+}
+.sidebar .sidebar-header {
+    background: #f1f5f9;
+    font-size: 1.15em;
+    border-top-right-radius: 18px;
+}
+.sidebar .nav-link {
+    border-radius: 8px; padding: 0.78em 1em; margin-right: 7px;
+    color: #3b3c45; font-weight: 500; transition: background .18s, color .18s;
+    display: flex; align-items: center;
+}
+.sidebar .nav-link.active, .sidebar .nav-link:hover {
+    background: linear-gradient(90deg,#e0f2fe,#bae6fd 90%);
+    color: #0ea5e9!important;
+    box-shadow: 0 4px 20px #38bdf822;
+}
+.sidebar .nav-link i { font-size: 1.2em; margin-right: 6px;}
+.main-content { margin-left: 220px; width: 100%; transition: margin-left .32s; }
+@media (max-width: 991.98px) {
+    .sidebar {
+        transform: translateX(-103%);
+        position: fixed; left: 0; top: 0; bottom: 0;
+        box-shadow: 2px 0 28px #90caf955;
+        border-top-right-radius: 14px;
+        border-bottom-right-radius: 14px;
+    }
+    .sidebar.show { transform: translateX(0); }
+    .main-content { margin-left: 0; }
+    .sidebar-header { padding-right: 0.4em !important; }
+    body.sidebar-open { overflow: hidden; } /* biar scroll halaman terkunci saat sidebar buka */
+}
+/* Floating burger menu always visible on mobile */
+.burger-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1050;
+    background: #0ea5e9;
+    color: #fff;
+    border-radius: 50%;
+    width: 46px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 24px #0ea5e933;
+    border: none;
+    transition: background .19s, box-shadow .19s;
+}
+.burger-btn:active,
+.burger-btn:focus { background: #3b82f6; }
+@media (min-width: 992px) {
+    .burger-btn { display: none; }
+}
+/* Table & Card List Mobile */
 @media (max-width: 600px) {
-  .table-responsive { display: none; }
-  .pompa-list-mobile, .log-list-mobile { display: block; margin-bottom: 70px; }
-  .row.g-2 > [class^="col-"] { margin-bottom: 10px; }
+    .container, .container-fluid { padding-left: 8px !important; padding-right: 8px !important; }
+    .pompa-list-mobile, .log-list-mobile, .jadwal-list-mobile { display: block; margin-bottom: 80px; }
+    .table-responsive { display: none; }
+    .row.g-2 > [class^="col-"], .row.row-cols-1 > [class^="col-"] { margin-bottom: 10px; }
 }
 @media (min-width: 601px) {
-  .pompa-list-mobile, .log-list-mobile { display: none; }
+    .pompa-list-mobile, .log-list-mobile, .jadwal-list-mobile { display: none; }
+}
+/* Card style modern */
+.glass {
+    border: none;
+    border-radius: 16px;
+    background: rgba(255,255,255,0.95)!important;
+    box-shadow: 0 3px 24px #d4e5ff36;
 }
 
-@media (max-width: 600px) {
-  .table-responsive { display: none; }
-  .jadwal-list-mobile { display: block; margin-bottom: 70px; }
-  .row.g-2 > [class^="col-"], .row.row-cols-1 > [class^="col-"] { margin-bottom: 10px; }
+.burger-btn {
+    position: fixed;
+    top: 24px;
+    left: 20px;
+    z-index: 1060;
+    background: #0ea5e9;
+    color: #fff;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 24px #0ea5e933;
+    border: none;
+    transition: background .19s, box-shadow .19s;
 }
-@media (min-width: 601px) {
-  .jadwal-list-mobile { display: none; }
+.burger-btn:active,
+.burger-btn:focus { background: #3b82f6; }
+@media (min-width: 992px) {
+    .burger-btn { display: none; }
+}
+
+@media (max-width: 991.98px) {
+  .main-content h4.fw-bold { margin-top: 54px !important; }
 }
