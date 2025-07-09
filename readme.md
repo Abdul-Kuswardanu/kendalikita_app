@@ -1,7 +1,3 @@
-# 📘 **README.md Project KendaliKita**
-
----
-
 ## **KendaliKita**
 
 *Aplikasi Web Dashboard Monitoring & Kontrol Pompa Air Otomatis*
