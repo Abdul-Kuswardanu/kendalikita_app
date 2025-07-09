@@ -1,10 +1,3 @@
-Siap bro!
-Berikut template **README.md** yang **rapih, jelas, dan profesional**
-untuk project web dashboard seperti KendaliKita —
-kamu tinggal ganti isinya sesuai kebutuhan (judul, fitur, struktur folder, dsb).
-
----
-
 # 📘 **README.md Project KendaliKita**
 
 ---
